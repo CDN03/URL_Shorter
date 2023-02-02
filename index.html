@@ -14,20 +14,26 @@
             const urlParams = new URLSearchParams(queryString);
             let parm = urlParams.get('u');
             switch (parm) {
-                case 'loop': 
-                location.href = 'https://s.nashef.ir/?u=loop';
-                break;
-                case 'g': 
-                location.href = 'https://google.com';
-                break;
-                case 'github': 
-                location.href = 'https://linktr.ee/MohsenEMX';
-                break;
-                case 'social': 
-                location.href = 'https://github.com/MohsenEMX';
-                break;
+                case 'loop': {
+                    location.href = 'https://s.nashef.ir/?u=loop';
+                    break;
+                }
+                case 'g': {
+                    location.href = 'https://google.com';
+                    break;
+                }
+                case 'social': {
+                    location.href = 'https://linktr.ee/MohsenEMX';
+                    break;
+                }
+                case 'github': {
+                    location.href = 'https://github.com/MohsenEMX';
+                    break;
+                }
+                
                 default: 
                 location.href = './404.html';
+                
             }
             clearInterval(x);
         }, 100)
