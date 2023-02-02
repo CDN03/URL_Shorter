@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting</title>
+</head>
+<body>
+    <h1>You'll be redirected soon.</h1>
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let parm = urlParams.get('u');
+        switch (parm) {
+            case 'loop': location.href = 'https://s.nashef.ir/?u=loop';
+            case 'g': location.href = 'https://google.com';
+            case 'github': location.href = 'https://linktr.ee/MohsenEMX';
+            case 'social': location.href = 'https://github.com/MohsenEMX';
+            default: location.href = './404.html';
+        }
+    </script>
+</body>
+</html>
