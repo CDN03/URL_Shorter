@@ -2,3 +2,10 @@ html {
     overflow: hidden;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif ;
 }
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+a:hover {
+    color: rgb(233, 43, 69);
+}
