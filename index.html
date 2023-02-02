@@ -9,15 +9,47 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./assets/style.css">
+        <link rel="stylesheet" href="./assets/mstyle.css">
     <title>Redirecting</title>
 </head>
 <body>
-    <h1>You'll be redirected soon.</h1>
+    <h1 id="yolup"></h1>
+    <div class="yes">
+        <progress value="0" max="100" id="progressBar"></progress>
+    </div>
+   
     <script>
-        let x = setInterval(function() {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            let parm = urlParams.get('u');
+        var time = 5000;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let parm = urlParams.get('u');
+        let parm2 = urlParams.get('t');
+        
+        if (parm2 != null) {
+                time = parm2 * 1000;
+                var timeleft = parm2;
+            } else if (parm2 == null) {
+                var timeleft = 5;
+            }
+            var countup = 1;
+            document.getElementById('progressBar').setAttribute('max',time);
+            let x = setInterval(function() {
+                if (time <= 0) {
+                    document.getElementById('yolup').innerHTML = 'Redirecting Now!';
+                    clearInterval(x);
+                    r();
+                } else {
+                    document.getElementById('yolup').innerHTML = 'You\'ll be Redirected In ' + timeleft + ' seconds!';
+                    document.getElementById('progressBar').value = countup;
+                    if (!(time % 1000)) {
+                    timeleft -= 1;
+                    }
+                    countup += 11;
+                    time -= 10;
+                    
+                }
+            },10)
+            function r() {
             switch (parm) {
                 case 'loop': {
                     location.href = 'https://s.nashef.ir/?u=loop';
@@ -48,8 +80,7 @@
                 location.href = './404.html';
                 
             }
-            clearInterval(x);
-        }, 100)
+        }
     </script>
 </body>
 </html>
