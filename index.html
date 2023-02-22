@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
         <meta name="description" content="A free useless open source link shortener made by @MohsenEMX">
-        <meta name="keywords" content="terminal, terminal in web,google, ">
+        <meta name="title" content="Link Shortener">
+        <meta name="keywords" content="terminal, terminal in web,google,link short,link shorter,short,links, ">
         <meta name="author" content="@MohsenEMX">
         <!-- <meta property="og:image" content="assets/og.png" /> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="./assets/style.css">
         <link rel="stylesheet" href="./assets/mstyle.css">
-    <title>Redirecting</title>
+    <title>Link Shortener</title>
 </head>
 <body>
     <h1 id="yolup"></h1>
     <div class="yes">
         <progress value="0" max="100" id="progressBar"></progress>
+        <br />
+        <p id="yup">Made by MohsenEMX</p>
     </div>
-    <p>Made by MohsenEMX</p>
+    
     <script>
         var time = 5000;
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         let parm = urlParams.get('u');
         let parm2 = urlParams.get('t');
-        
+        let sec_parm = urlParams.get('q');
+        let parm3 = urlParams.get('url');
         if (parm2 != null) {
                 time = parm2 * 1000;
                 var timeleft = parm2;
@@ -36,6 +40,7 @@
             let x = setInterval(function() {
                 if (time <= 0) {
                     document.getElementById('yolup').innerHTML = 'Redirecting Now!';
+                    document.title = 'Redirecting Now!';
                     clearInterval(x);
                     r();
                 } else {
@@ -52,34 +57,63 @@
             function r() {
             switch (parm) {
                 case 'loop': {
-                    location.href = 'https://s.nashef.ir/?u=loop';
+                    // location.href = 'https://s.nashef.ir/?u=loop';
+                    redirect('https://s.nashef.ir/?u=loop',100);
                     break;
                 }
                 case 'g': {
-                    location.href = 'https://google.com';
+                    // location.href = 'https://google.com';
+                    redirect('https://google.com',100);
                     break;
                 }
                 case 'social': {
-                    location.href = 'https://linktr.ee/MohsenEMX';
+                    // location.href = 'https://linktr.ee/MohsenEMX';
+                    redirect('https://linktr.ee/MohsenEMX',100);
                     break;
                 }
                 case 'github': {
-                    location.href = 'https://github.com/MohsenEMX';
+                    //location.href = 'https://github.com/MohsenEMX';
+                    redirect('https://github.com/MohsenEMX',100);
                     break;
                 }
                 case 'request': {
-                    location.href = 'https://s.nashef.ir/request';
+                    // location.href = 'https://s.nashef.ir/request';
+                    redirect('https://s.nashef.ir/request',100);
                     break;
                 }
                 case 'links': {
-                    location.href = 'https://s.nashef.ir/urls';
+                    //location.href = 'https://s.nashef.ir/urls';
+                    redirect('https://s.nashef.ir/urls',100);
                     break;
                 }
-                
-                default: 
-                location.href = './404.html';
+                case 'a': {
+                    //location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+                    redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ',100);
+                    break;
+                }
+                case '0': {
+                    console.log('Code 0 does nothing',100);
+                    break;
+                }
+                default: {
+                    if (parm3 != null) {
+                        redirect(parm3,100);
+                    } else {
+                        location.href = './404.html';
+                    }
+                }
                 
             }
+            if (sec_parm == 0) {
+                //location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+                redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ',100)
+            }
+        }
+        function redirect (url,time1) {
+            var qq = setInterval(function() {
+                location.href = url;
+                clearInterval(qq);
+            },time1);
         }
     </script>
 </body>

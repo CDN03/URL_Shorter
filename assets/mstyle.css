@@ -53,3 +53,12 @@ progress[value]::-webkit-progress-value::after {
   top: 7px;
   background-color: white;
 }
+#yup {
+  position: fixed;
+  left: 0;
+  bottom: -35px;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
